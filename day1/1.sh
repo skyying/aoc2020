@@ -7,7 +7,7 @@ entries=($(cat  ./in |tr "\n" " "))
 len_of_entreis=$(("${#entries[@]}"))
 
 
-function get_product_from_two_entreis() {
+function get_product_from_2_sum() {
 
   # default value handling
   local target=2020
@@ -38,7 +38,7 @@ function get_product_from_3_sum() {
 
   while [ $i -le $len_of_entreis ]; do
     local cur=${entries[$i]}
-    local product=$(get_product_from_two_entreis $(($target_sum - $cur)) $(($i + 1)) )
+    local product=$(get_product_from_2_sum $(($target_sum - $cur)) $(($i + 1)) )
 
     if (( $product > 0 )); then
       count=$(($cur * $product))
@@ -51,7 +51,7 @@ function get_product_from_3_sum() {
 }
 
 function exec_part_1() {
-  echo $(get_product_from_two_entreis)
+  echo $(get_product_from_2_sum)
 }
 
 function exec_part_2() {
