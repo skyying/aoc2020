@@ -9,7 +9,7 @@ def parse_input():
     return content
 
 
-def get_times_of_valid_password(passwords):
+def get_valid_password_count_by_boundaries_correctness(passwords):
     count = 0
     for p in passwords:
         lookup = {}
@@ -24,12 +24,10 @@ def get_times_of_valid_password(passwords):
             if low <= lookup[c] <= hi:
                 count += 1
 
-    print(count)
     return count
 
 
-
-def get_times_of_valid_password_v2(passwords):
+def get_valid_password_count_by_position_correctness(passwords):
     count = 0
     for p in passwords:
         p1, p2, c, pw = p
@@ -37,12 +35,23 @@ def get_times_of_valid_password_v2(passwords):
             count += 1
         elif pw[p1-1] != c and pw[p2-1] == c:
             count += 1
-
-    print(count)
     return count
 
+
+def exec_part1(input):
+    return get_valid_password_count_by_boundaries_correctness(inputs)
+
+
+def exec_part2(input):
+    return get_valid_password_count_by_position_correctness(inputs)
+
+
 inputs = parse_input()
-get_times_of_valid_password(inputs)
-get_times_of_valid_password_v2(inputs)
 
 
+# part 1
+print(exec_part1(inputs))
+
+
+# part 2
+print(exec_part2(inputs))

@@ -2,11 +2,12 @@ import functools
 import re
 from validator import get_validator
 
-required_fields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid' ]
+required_fields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
 optional_fields = ['cid']
 
+
 def read_passports():
-    f = open('../in', 'r')
+    f = open('./in', 'r')
     return f.read().split("\n\n")
 
 
@@ -51,15 +52,23 @@ def get_valid_passport_count(passports, validator):
     for passport in passports:
         passport = normalize_passports(passport)
         if validator(passport):
-            count+=1
+            count += 1
     return count
 
 
 passports = read_passports()
 
+
+def exec_part1(passports):
+    return get_valid_passport_count(passports, is_pass_simple_validation)
+
+
+def exec_part2(passports):
+    return get_valid_passport_count(passports, is_all_fields_valid)
+
+
 # part 1
-print(get_valid_passport_count(passports, is_pass_simple_validation))
+print(exec_part1(passports))
 
 # part 2
-print(get_valid_passport_count(passports, is_all_fields_valid))
-
+print(exec_part2(passports))

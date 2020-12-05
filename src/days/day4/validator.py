@@ -1,10 +1,12 @@
 import re
 
+
 def byr(value):
     """
     byr (Birth Year) - four digits; at least 1920 and at most 2002.
     """
     return 1920 <= int(value) <= 2002
+
 
 def iyr(value):
     """
@@ -18,6 +20,7 @@ def eyr(value):
     eyr (Expiration Year) - four digits; at least 2020 and at most 2030.
     """
     return 2020 <= int(value) <= 2030
+
 
 def hgt(value):
     """
@@ -46,6 +49,7 @@ def hcl(value):
     m = p.match(value)
     return m is not None and m.group() == value
 
+
 def ecl(value):
     """
     ecl (Eye Color) - exactly one of: amb blu brn gry grn hzl oth.
@@ -71,12 +75,12 @@ def cid(value):
 
 def get_validator():
     return {
-    'cid': cid,
-    'pid': pid,
-    'byr': byr,
-    'iyr': iyr,
-    'eyr': eyr,
-    'hgt': hgt,
-    'hcl': hcl,
-    'ecl': ecl,
-}
+        'cid': cid,
+        'pid': pid,
+        'byr': byr,
+        'iyr': iyr,
+        'eyr': eyr,
+        'hgt': hgt,
+        'hcl': hcl,
+        'ecl': ecl,
+    }
