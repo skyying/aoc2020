@@ -1,6 +1,6 @@
 
 def read_file():
-    f = open('./in', 'r')
+    f = open('in', 'r')
     content = []
     for x in f:
         content.append(x.strip('\n'))

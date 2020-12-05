@@ -1,5 +1,5 @@
 def parse_input():
-    f = open('./in', 'r')
+    f = open('in', 'r')
     content = []
     for x in f:
         limit, c, pw = x.strip('\n').split(" ")

@@ -1,7 +1,7 @@
 import functools 
 
 def read_map():
-    f = open('./in', 'r')
+    f = open('in', 'r')
     content = []
     for x in f:
         content.append(x.strip('\n'))
