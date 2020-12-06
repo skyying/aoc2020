@@ -28,10 +28,8 @@ function get_valid_password_count_by_boundaries_correctness() {
     IFS='-' read -r -a limit <<< "${policy[0]}"
     IFS=':' read -r -a char <<< "${policy[1]}"
 
-    ocr=$(calc_occurrence "${char[0]}" "${policy[2]}")
-    if (( ocr >= limit[0] )) && (( ocr <= limit[1] )); then
-      count=$(("$count" +  1))
-    fi
+    occurrence=$(calc_occurrence "${char[0]}" "${policy[2]}")
+    (( occurrence >= limit[0] )) && (( occurrence <= limit[1] )) && (( count++ ))
   done
   echo "$count"
 }
