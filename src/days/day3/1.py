@@ -19,8 +19,7 @@ def traverse_by_slope(slope):
     width = len(tree_map[0])
 
     while y + down < height:
-        x += right
-        x = x % width
+        x = (x + right) % width
         y += down
         if tree_map[y][x] == '#':
             count += 1
