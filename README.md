@@ -9,7 +9,7 @@ https://adventofcode.com/2020/
 | days  | python  |  golang  | bash | javascript  |
 |---|---|---|---|---|
 | day1  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day1/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day1/1.go)  |  [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day1/1.sh) | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day1/1.js)  |
-| day2  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day2/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day2/1.go)  |   |  |
+| day2  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day2/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day2/1.go)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day2/1.sh)   |  |
 | day3  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day3/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day3/1.go)  |   |  |
 | day4  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day4/1.py)  |   |   |  |
 | day5  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day5/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day5/1.go)  |   |  |
