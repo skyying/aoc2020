@@ -23,7 +23,6 @@ def read_bags():
     f = open('in', 'r')
     return list(map(parse_line, f.read().strip("\n").split("\n")))
 
-
 def build_graph(relations):
     graph={}
     for relation in relations:
@@ -35,41 +34,11 @@ def build_graph(relations):
         graph[root]=set
     return graph
 
-def calc_options(target_color, graph, roots):
-    res=[]
-    for k, v in graph.items():
-        if target_color in v and k in roots:
-            res.append(k)
-    return res
+def bag_contain_target_color(graph, bag, target_color):
+    if target_color in bag:
+        return True
+    return any([bag_contain_target_color(graph, graph[k], target_color) for k in bag])
 
-def make_roots(bags):
-    roots={}
-    for b in bags:
-        rr, _ = b
-        roots[rr]=True
-    return roots
-
-def calc_colors(target_color, bags):
-    queue=[target_color]
-    roots=make_roots(bags)
-    seen={}
-    opt={}
-    while queue:
-        first = queue.pop(0)
-        seen[first]=True
-        layers = calc_options(first, graph, roots)
-        for l in layers:
-            opt[l]=True
-            if l not in seen:
-                queue.append(l)
-    return len(opt)
-
-def remove_end_colors(seen):
-    count=0
-    for k, v in seen.items():
-        if k not in end_colors:
-            count+=1
-    return count
 
 def get_expanded_bags():
     expaned={}
@@ -88,14 +57,13 @@ def count_bags(target_color, expanded):
         remaining.append(count_bags(color, expanded))
     return sum(remaining)+len(expanded[target_color])
 
-
-
 bags=read_bags()
 graph=build_graph(bags)
 expanded_bags=get_expanded_bags()
 
 def exec_part1():
-    print(calc_colors('shiny gold', bags))
+    res = sum([bag_contain_target_color(graph, bag, 'shiny gold') for type, bag in graph.items()])
+    print(res)
 
 def exec_part2():
     print(count_bags('shiny gold', expanded_bags))
