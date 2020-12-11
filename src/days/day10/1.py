@@ -2,7 +2,7 @@ from collections import defaultdict
 
 def get_adapter_in_bags():
     f = open('./in', 'r')
-    return sorted(list(map(lambda x: int(x), f.get_inputs().strip().split("\n"))))
+    return sorted(list(map(lambda x: int(x), f.read().strip().split("\n"))))
 
 def get_adapters():
     adapters_in_bags=get_adapter_in_bags()
