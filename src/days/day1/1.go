@@ -2,10 +2,10 @@ package main
 
 import (
 	"bufio"
-	"errors"
 	"fmt"
 	"os"
 	"strconv"
+	"utils"
 )
 
 func readFile() []int {
@@ -22,22 +22,16 @@ func readFile() []int {
 }
 
 func twoEntries(nums []int, target int) (int, error) {
-	seen := make(map[int]bool, 0)
-	for _, n := range nums {
-		if _, ok := seen[target-n]; ok {
-			return (target - n) * n, nil
-		}
-		seen[n] = true
-	}
-	return 0, errors.New("no matched")
+    a, b, err := utils.TwoSum(nums, target)
+    return a * b, err
 }
 
 func threeEntries(nums []int, target int) int {
 	for i, n := range nums {
 		complement := target - n
-		val, err := twoEntries(nums[i+1:len(nums)], complement)
+		targetNum, err := twoEntries(nums[i+1:len(nums)], complement)
 		if err == nil {
-			return val * n
+			return targetNum * n
 		}
 	}
 	return 0
@@ -45,7 +39,9 @@ func threeEntries(nums []int, target int) int {
 
 func main() {
 	nums := readFile()
-	m2, err := twoEntries(nums, 2020)
-	m3 := threeEntries(nums, 2020)
-	fmt.Println(m2, m3)
+	// part 1
+	fmt.Println(twoEntries(nums, 2020))
+
+	// part 2
+	fmt.Println(threeEntries(nums, 2020))
 }
