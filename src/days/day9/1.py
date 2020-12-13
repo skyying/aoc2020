@@ -22,23 +22,21 @@ def calc_first_number_of_not_meet_sum_of_pre_range(preamble_range, digits):
 
 
 def contagious_sum(n, digits):
-    left=0
+    left=-1
     right=0
-    sum=digits[left]
-    while sum != n and left <= right < len(digits):
+    sum=digits[0]
+    while sum != n and left < right < len(digits):
         if sum < n:
             right+=1
             sum+=digits[right]
         else:
-            sum-=digits[left]
             left+=1
+            sum-=digits[left]
 
         if sum == n and right - left > 1:
             print(digits[left], digits[right])
 
-    mx=max(digits[left:right+1])
-    mi=min(digits[left:right+1])
-    return mx + mi
+    return max(digits[left:right+1]) + min(digits[left:right+1])
 
 
 digits=get_inputs()
