@@ -1,7 +1,6 @@
 package utils
 
 import (
-    "math"
     "errors"
     )
 
@@ -18,12 +17,28 @@ func TwoSum(nums []int, target int) (int, int, error) {
 }
 
 
-func MaxInt(ary ...int) int {
-    max_value := math.MinInt32
+const (
+    MaxInt64  = 1<<63 - 1
+    MinInt64  = -1 << 63
+)
+
+func MinInt(ary ...int) int {
+    minValue := MaxInt64
     for _, element := range ary {
-        if element > max_value {
-            max_value = element
+        if element < minValue {
+            minValue = element
         }
     }
-    return max_value
+    return minValue
+}
+
+
+func MaxInt(ary ...int) int {
+    maxValue := MinInt64
+    for _, element := range ary {
+        if element > maxValue {
+            maxValue = element
+        }
+    }
+    return maxValue
 }
