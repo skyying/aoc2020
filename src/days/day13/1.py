@@ -36,5 +36,7 @@ def not_position(scalar, buses, max_bus_id):
         if bus_id * scalar != offset + earliest:
             return True
     return False
+
+
 t1, b1 = read_input()
 print(part_1(t1, b1))
