@@ -15,8 +15,10 @@ https://adventofcode.com/2020/
 | day5  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day5/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day5/1.go)  |   |  |
 | day6  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day6/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day6/1.go)  |   |  |
 | day7  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day7/1.py)  |   |   |  |
-| day8  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day8/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day8/1.go)  |   |  |
-| day9  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day9/1.py)  |   |   |  |
+| day8  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day8/1.py)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day8/1.go)  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day8/1.sh)   |  |
+| day9  | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day9/1.py)  |  [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day9/1.go) |   |  |
 | day10 | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day10/1.py)  |   |   |  |
 | day11 | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day11/1.py)  |   |   |  |
 | day12 | [solution (part 1)](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day12/1.py) <br/> [solution (part 2)](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day12/2.py)  |   |   |  |
+| day13 | [solution (part 1)](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day13/1.py) |   |   |  |
+| day14 | [solution (part 1)](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day14/1.py) |   |   |  |

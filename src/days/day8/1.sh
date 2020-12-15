@@ -33,10 +33,6 @@ function part_one () {
   printf "Part 1: %s\n" "$acc"
 }
 
-function Part_2() {
-
-}
-
 
 part_one "${instructions[@]}"
 
