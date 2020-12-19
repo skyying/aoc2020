@@ -1,17 +1,4 @@
-
-# class: 1-3 or 5-7
-# row: 6-11 or 33-44
-# seat: 13-40 or 45-50
-#
-# your ticket:
-# 7,1,14
-#
-# nearby tickets:
-# 7,3,47
-# 40,4,50
-# 55,2,20
-# 38,6,12
-
+from operator import itemgetter, attrgetter
 
 def parse_range(ary):
     ans = []
@@ -24,16 +11,21 @@ def parsed_t2(tickets):
     tt = tickets.split("\n")[1:]
     ans = []
     for t in tt:
-        print(t)
         ans.append([int(x) for x in t.split(',')])
     return ans
 
+def range_rule_by_row(rules_str):
+    rules = {}
+    for i, rule in enumerate(rules_str):
+        name, detail = rule.split(": ")
+        r1, r2 = detail.split(" or ")
+        rules[name]=parse_range([r1, r2]) + [i]
+    return rules
 
 def read_input():
     f = open('./in', 'r')
     cc = f.read().strip().split("\n\n")
     ran, t1, t2 = cc
-
     rr = ran.split('\n')
     valid_range=[]
     for r in rr:
@@ -43,8 +35,8 @@ def read_input():
             valid_range.append(p)
     at1 = [int(x) for x in t1.strip().split('\n')[1].split(",")]
     at2 = parsed_t2(t2)
-    print(at1)
-    return valid_range, at1, at2
+    rules = range_rule_by_row(rr)
+    return valid_range, at1, at2, rules
 
 def parse_valid_range(ran):
     aa = sorted(ran, key=lambda x: x[0])
@@ -60,28 +52,81 @@ def parse_valid_range(ran):
             stack.append(aa[i])
     return stack
 
-
-
-
-def exec_part1(valid_range, my_tickets, nearby_tickets):
-    ran = parse_valid_range(valid_range)
-    ss = 0
+def exec_part1(valid_ranges, nearby_tickets):
+    valid_range_list = parse_valid_range(valid_ranges)
+    error_rate = 0
+    valid_tickets=[]
     for ticket in nearby_tickets:
-        for t in ticket:
-            is_valid= False
-            for r in ran:
-                s, e = r
-                if s<=t<=e:
-                    is_valid=True
+        is_all_field_valid=True
+        for field in ticket:
+            is_field_valid = False
+            for valid_range in valid_range_list:
+                start, end = valid_range
+                if start<=field<=end:
+                    is_field_valid=True
                     break
-            if not is_valid:
-                ss+=t
+                else:
+                    is_all_field_valid=False
+            if not is_field_valid:
+                error_rate+=field
+        if is_all_field_valid:
+            valid_tickets.append(ticket)
 
-    print(ss)
-    return ss
+    return error_rate, valid_tickets
+
+def validate_range(current, rule):
+    start, end, _ = rule
+    ss, se = start
+    es, ee = end
+    if current[0] < ss or current[-1] > ee:
+        return False
+    for x in current:
+        if se < x < es:
+            return False
+    return True
+
+def reversed_tickets_by_fields(tickets):
+    reversed = []
+    for i in range(len(tickets[0])):
+        reversed.append([])
+        for j in range(len(tickets)):
+            value = tickets[j][i]
+            reversed[i].append(value)
+        reversed[i] = sorted(reversed[i])
+    return reversed
+
+def calc_matched_filed_name_in_ticket_index(rules, fields_in_tickets):
+    matched = {}
+    for name, rule in rules.items():
+        for fi in range(len(fields_in_tickets)):
+            is_valid = validate_range(fields_in_tickets[fi], rule)
+            if is_valid:
+                if name in matched:
+                    matched[name] = matched[name] + [fi]
+                else:
+                    matched[name] = [fi]
+    return matched
 
 
+def exec_part2(rules, my_ticket, valid_tickets):
+    reversed = reversed_tickets_by_fields(valid_tickets)
+    matched = calc_matched_filed_name_in_ticket_index(rules, reversed)
+    sorted_matched = sorted(matched, key=lambda k: len(matched[k]))
+    valid_field_index = {}
+    for i, name in enumerate(sorted_matched):
+        assert len(matched[name]) == 1
+        valid_field_index[name] = matched[name][0]
+        to_remove=valid_field_index[name]
+        for other_name in sorted_matched[i+1:]:
+            matched[other_name].remove(to_remove)
+    ans = 1
+    for name, i in valid_field_index.items():
+        if name.startswith('departure'):
+            ans = ans*my_ticket[i]
+    return ans
 
-
-a, b, c = read_input()
-exec_part1(a, b, c)
+valid_range, my_ticket, nearby_tickets, range_rules = read_input()
+error_rate, valid_tickets = exec_part1(valid_range, nearby_tickets)
+print('Part 1 => ', error_rate)
+ans = exec_part2(range_rules, my_ticket,  valid_tickets)
+print('Part 2 => ', ans)
