@@ -24,3 +24,10 @@ https://adventofcode.com/2020/
 | day14 | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day14/1.py) |   |   |  |
 | day15 | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day15/1.py) |   |   |  |
 | day16 | [solution](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day16/1.py) |   |   |  |
+| day17 |  |   |   |  |
+| day18 |  |   |   |  |
+| day19 |  |   |   |  |
+| day20 |  |   |   |  |
+| day21 |  |   |   |  |
+| day22 |  |   |   |  |
+| day23 | [solution (part 1)](https://github.com/skyying/adventOfCode2020/blob/master/src/days/day23/1.py) |   |   |  |
